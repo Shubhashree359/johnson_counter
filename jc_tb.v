@@ -10,7 +10,7 @@ clk=0;
 rst = 0;
 
 //$monitor($time, ,”c=%b”,clk, , ,”r=%b”,rst, , ,”q=%b”,q);
-$dumpfile("iiitb_jc.vcd");
+  $dumpfile("pes_jc.vcd");
 $dumpvars(1);
 #6 rst =1;
 end
