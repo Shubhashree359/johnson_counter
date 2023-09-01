@@ -1,8 +1,8 @@
-module iiitb_jc_tb;
+module pes_jc_tb;
 reg clk;
 reg rst;
 wire [7:0]q;
-iiitb_jc j1(rst,clk,q);
+pes_jc j1(rst,clk,q);
 
 initial
 begin
