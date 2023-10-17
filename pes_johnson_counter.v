@@ -1,4 +1,4 @@
-module pes_johson_counter (reset,clk, q);
+module pes_johnson_counter (reset,clk, q);
 input reset, clk;
 output reg [7:0] q;
 always @(negedge reset or posedge clk)
