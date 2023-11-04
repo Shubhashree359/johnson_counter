@@ -92,13 +92,206 @@ Now you need to create a yosys_run.sh file , which is the yosys script file used
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/4c3255f1-7bb4-4064-968a-2d2dafed3c96)
 
+##  PHYSICAL DESIGN
 
+ ### Openlane
+OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout and a number of custom scripts for design exploration and optimization. The flow performs full ASIC implementation steps from RTL all the way down to GDSII
 
-
-
-
-
+First we create a folder under the name of our design in the 'designs' folder.
     
+     cd pes_johnson_counter
+    
+then we create a config.json file.
+We make a new directory called 'src' using:
+
+     cd src
+    
+We add the following files to this directory.
+
+All these files are found above in the 'pes_johnson_counter' folder.
+
+Now in the main 'Openlane' directory type         mkdir pdks
+
+Copy paste the         .v     file in it. Found in the verilog_model folder above.
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/3d261c75-c561-4e8c-bbff-ded8fd15ed5a)
+
+Type make mount in the main Openlane terminal
+
+    make mount
+    ./flow.tcl -interactive
+    prep -design pes_johnson_counter
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/eb854f2f-3880-4db7-8b2f-ed7ea480c9de)
+
+### synthesis 
+Synthesis is the process of creating a gate level description of the blocks that are described behaviorally in verilog and prepairing the complete design for the place and route process.
+
+command for synthesis:
+
+    run_synthesis    
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/9e3e7aff-eb32-4037-92ab-863cd3a0d7a4)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/460797cb-1216-41ef-9f63-9e0f22211a8e)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/5a396fde-f7f5-4f48-a565-3fb685fc7367)
+
+#### Calculating Flop Ratio
+
+
+Flop ratio = Number of D Flip flops / Total Number of cells
+
+Flop Ratio = 8/9 = 0.889
+
+### Floorplan
+Physical design is process of transforming netlist into layout which is manufacture-able [GDS]. Physical design process is often referred as PnR (Place and Route) / APR (Automatic Place & Route). Main steps in physical design are placement of all logical cells, clock tree synthesis & routing. During this process of physical design timing, power, design & technology constraints have to be met. Further design might require being optimized w.r.t area, power and performance
+
+Now to invoke the floorplan we type
+
+    run_floorplan
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/e3b1d68d-737a-4af9-9dd1-47da84f0482d)
+
+Post the floorplan run, a .def file will have been created within the results/floorplan directory. We may review floorplan files by checking the floorplan.tcl. The system defaults will have been overriden by switches set in conifg.tcl and further overriden by switches set in sky130A_sky130_fd_sc_hd_config.tcl.
+
+die area 
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/01eafa66-c540-403d-a6b8-5a4c2d38f57d)
+
+core area 
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/076225ab-5eb9-4a65-ac0c-f79f2531883d)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/20c8cd0d-14bb-4fbe-8e3a-b7bf06cbdfaa)
+
+To view the design we type
+
+    magic -T /home/vsd/VLSI/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ripco.def &
+
+* One can zoom into Magic layout by selecting an area with left and right mouse click followed by pressing "z" key.
+* Various components can be identified by using the what command in tkcon window after making a selection on the component.
+* Zooming in also provides a view of decaps present in johnson's counter chip.
+* The standard cell can be found at the bottom left corner.
+
+### Placement
+Placement can be done in four phases:
+
+#### * Pre-placement optimization:
+In this process optimization happens before netlist is placed. In this process high-fan out nets are collapsed downsizing the cells.
+
+#### * In placement optimization: 
+In this process logic is re-optimized according to the VR. Cell bypassing, cell moving, gate duplication, buffer insertion, etc. can be performed in this step.
+
+#### * Post Placement optimization: 
+Netlist is optimized with ideal clocks before CTS. It can fix setup, hold violations. Optimization is done based on global routing.
+
+#### * Post placement optimization after CTS optimization: 
+Optimization is performed after the CTS optimization is done using propagated clock. It tries to preserve the clock skew.
+
+Invoke placement using command: 
+    
+    run_placement
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/d841af37-ba7a-4adf-9706-1e1ddc6426be)
+
+to see the design 
+
+    magic -T /home/vsd/VLSI/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ripco.def &
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/d3ed191a-2977-458f-a599-6ed369659d22)
+
+### Clock Tree Synthesis (CTS):
+
+The purpose of building a clock tree is enable the clock input to reach every element and to ensure a zero clock skew. H-tree is a common methodology followed in CTS. Before attempting a CTS run in TritonCTS tool, if the slack was attempted to be reduced in previous run, the netlist may have gotten modified by cell replacement techniques. Therefore, the verilog file needs to be modified using the write_verilog command. Then, the synthesis, floorplan and placement is run again. To run CTS use the below command:
+
+    run_cts
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/1c660da1-eff9-4489-8e40-e6ecd46fe1f4)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/e5697ab6-58ea-458d-a48c-1c58390c074c)
+
+### Routing:
+The overall routing job is executed in three steps which are
+
+#### Global Routing :
+In this stage, the whole design is first partitioned in small routing region into tiles/rectangles. Also, region to region paths are decided in a way to optimize the wire lengths and timing. This stage is actually the planning stage and no actual routing is done.
+
+#### Track Assignment:
+In this stage, the routing tracks assigned by the global stage are replaced by the metal layers. Tracks are assigned in horizontal and vertical direction. If overlapping is occurred then rerouting is done.
+
+#### Detailed Routing: 
+Even if the metal layers are laid, the path may exists which can violate the setup and hold criteria In this stage, the critical paths are searched and fixed in many iterations until fixed.
+
+Write the command to run routing:
+
+    run_routing
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/bb82e637-5e2f-4108-a8b4-302650697beb)
+
+To see the design:
+    
+    magic -T /home/vsd/VLSI/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ripco.def &
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/58d24ccc-062d-4d9a-978e-f4ae268c038d)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/2755017b-54c5-4afb-b2de-5aad8d4b9ec3)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/cf3b30cd-aff2-4b2f-a38e-c3618f7f77c3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
