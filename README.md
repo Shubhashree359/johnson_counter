@@ -92,9 +92,9 @@ Now you need to create a yosys_run.sh file , which is the yosys script file used
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/4c3255f1-7bb4-4064-968a-2d2dafed3c96)
 
-##  PHYSICAL DESIGN
+#  PHYSICAL DESIGN
 
- ### Openlane
+ ## Openlane
 OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout and a number of custom scripts for design exploration and optimization. The flow performs full ASIC implementation steps from RTL all the way down to GDSII
 
 First we create a folder under the name of our design in the 'designs' folder.
