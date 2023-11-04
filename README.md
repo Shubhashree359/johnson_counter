@@ -177,16 +177,16 @@ To view the design we type
 ### Placement
 Placement can be done in four phases:
 
-#### * Pre-placement optimization:
+#### Pre-placement optimization:
 In this process optimization happens before netlist is placed. In this process high-fan out nets are collapsed downsizing the cells.
 
-#### * In placement optimization: 
+#### In placement optimization: 
 In this process logic is re-optimized according to the VR. Cell bypassing, cell moving, gate duplication, buffer insertion, etc. can be performed in this step.
 
-#### * Post Placement optimization: 
+#### Post Placement optimization: 
 Netlist is optimized with ideal clocks before CTS. It can fix setup, hold violations. Optimization is done based on global routing.
 
-#### * Post placement optimization after CTS optimization: 
+#### Post placement optimization after CTS optimization: 
 Optimization is performed after the CTS optimization is done using propagated clock. It tries to preserve the clock skew.
 
 Invoke placement using command: 
