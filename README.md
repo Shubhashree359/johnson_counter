@@ -156,7 +156,7 @@ Copy paste the         .v     file in it. Found in the verilog_model folder abov
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/eb854f2f-3880-4db7-8b2f-ed7ea480c9de)
 
-### synthesis 
+## synthesis 
 Synthesis is the process of creating a gate level description of the blocks that are described behaviorally in verilog and prepairing the complete design for the place and route process.
 
 command for synthesis:
@@ -165,9 +165,10 @@ command for synthesis:
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/9e3e7aff-eb32-4037-92ab-863cd3a0d7a4)
 
-![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/460797cb-1216-41ef-9f63-9e0f22211a8e)
+### Synthesis printing statistics
 
-![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/5a396fde-f7f5-4f48-a565-3fb685fc7367)
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/33bcaf63-3b5c-45ad-bd68-1c18c72af298)
+
 
 #### Calculating Flop Ratio
 
@@ -250,6 +251,10 @@ The purpose of building a clock tree is enable the clock input to reach every el
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/1c660da1-eff9-4489-8e40-e6ecd46fe1f4)
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/e5697ab6-58ea-458d-a48c-1c58390c074c)
+
+checks report:
+
+    
 
 #### Magic output:
 
