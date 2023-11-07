@@ -97,6 +97,24 @@ Now you need to create a yosys_run.sh file , which is the yosys script file used
  ## Openlane
 OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout and a number of custom scripts for design exploration and optimization. The flow performs full ASIC implementation steps from RTL all the way down to GDSII
 
+### Openlane FLow
+
+### 1. Automation
+
+ * Speed and Efficiency: Automated OpenLane flow is designed for speed and efficiency. It can quickly generate a complete ASIC design without the need for much user intervention.
+ * Batch Processing: It is well-suited for batch processing where you have a large number of similar designs or you want to quickly evaluate multiple design options.
+ * Scriptable and Reproducible: The flow can be scripted, making it suitable for running on large clusters or cloud-based infrastructure, and it ensures reproducible results.
+ * Minimal User Expertise: You do not need in-depth expertise in ASIC design to run the automated flow, making it accessible to a wider range of users.
+ * Default Configuration: It typically relies on a default configuration and a pre-defined set of tools and options, which simplifies the process but may not be optimized for specific custom requirements.
+
+### 2. Interactive
+
+ * Customization: The interactive OpenLane flow allows users to have more control and customization over the design process. You can fine-tune parameters, specify custom design rules, and make changes at different stages of the flow.
+ * Optimization: Users can optimize the design for specific performance, power, or area requirements by adjusting various design parameters and choices.
+ * Debugging and Troubleshooting: When issues or design challenges arise, the interactive flow provides a way to interactively diagnose and resolve them, allowing for more in-depth analysis.
+ * Design Exploration: It is suitable for design exploration, where designers want to experiment with different design options and evaluate their impact on the final result.
+ * Expertise Required: Using the interactive flow requires a higher level of expertise in ASIC design, as it involves more manual intervention and decision-making
+
 First we create a folder under the name of our design in the 'designs' folder.
     
      cd pes_johnson_counter
@@ -116,11 +134,25 @@ Copy paste the         .v     file in it. Found in the verilog_model folder abov
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/3d261c75-c561-4e8c-bbff-ded8fd15ed5a)
 
-Type make mount in the main Openlane terminal
+### 1. Automatic flow openlane
 
-    make mount
+    cd OpenLane
+    sudo make mount
+    ./flow.tcl -design PES_freqdiv
+    
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/f3df8d49-f3ff-45e6-8a7c-182ac12c47fb)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/d09afad6-ba4a-4698-8d39-1be81649876b)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/86a1c5ae-e076-4724-b079-29b7a992167b)
+
+### 2. Interactive flow openlane
+
+    cd OpenLane
+    sudo make mount
     ./flow.tcl -interactive
-    prep -design pes_johnson_counter
+    package reuire opanlane
+    prep -design PES_freqdiv
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/eb854f2f-3880-4db7-8b2f-ed7ea480c9de)
 
@@ -169,6 +201,10 @@ To view the design we type
 
     magic -T /home/vsd/VLSI/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ripco.def &
 
+### Magic output:
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/c12165cd-bec2-491a-9b60-dcff7c7a1831)
+
 * One can zoom into Magic layout by selecting an area with left and right mouse click followed by pressing "z" key.
 * Various components can be identified by using the what command in tkcon window after making a selection on the component.
 * Zooming in also provides a view of decaps present in johnson's counter chip.
@@ -199,6 +235,10 @@ to see the design
 
     magic -T /home/vsd/VLSI/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ripco.def &
 
+#### Magic output:
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/5cee7de7-f230-4f27-918e-60b64c77070f)
+
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/d3ed191a-2977-458f-a599-6ed369659d22)
 
 ### Clock Tree Synthesis (CTS):
@@ -211,7 +251,13 @@ The purpose of building a clock tree is enable the clock input to reach every el
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/e5697ab6-58ea-458d-a48c-1c58390c074c)
 
-### Routing:
+#### Magic output:
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/dbb3914b-3e52-46ca-819a-8ae57f40da41)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/073c54ff-ced5-44b5-9c19-482fb3859c34)
+
+### Routing
 The overall routing job is executed in three steps which are
 
 #### Global Routing :
@@ -232,13 +278,14 @@ Write the command to run routing:
 To see the design:
     
     magic -T /home/vsd/VLSI/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_ripco.def &
+    
+#### Magic output:
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/58d24ccc-062d-4d9a-978e-f4ae268c038d)
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/2755017b-54c5-4afb-b2de-5aad8d4b9ec3)
 
-![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/cf3b30cd-aff2-4b2f-a38e-c3618f7f77c3)
-
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/42235633-5ad5-4ea2-bc1f-31e36f5572e5)
 
 
 
