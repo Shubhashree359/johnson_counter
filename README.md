@@ -1905,6 +1905,9 @@ checks report:
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/66995dcf-ccaf-4bb3-a69b-030519370340)
 
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/1a714b49-e418-4914-b370-d83cdd50503c)
+
+
 #### Magic output:
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/dbb3914b-3e52-46ca-819a-8ae57f40da41)
@@ -1928,6 +1931,12 @@ Write the command to run routing:
     run_routing
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/bb82e637-5e2f-4108-a8b4-302650697beb)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/abd35dc9-e0ee-4ce9-b317-0371c854ec7a)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/5079af45-c895-457d-b734-7ed9ae4ef3e1)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/1c00edc3-ee59-4827-a897-57976b02530e)
 
 To see the design:
     
