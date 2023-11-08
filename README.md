@@ -1901,6 +1901,8 @@ checks report:
 
     worst slack corner Typical: 0.2322
 
+### cts report generated
+
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/29d30efd-0aa0-4a70-aa1b-548dfd7f588d)
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/66995dcf-ccaf-4bb3-a69b-030519370340)
@@ -1932,6 +1934,8 @@ Write the command to run routing:
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/bb82e637-5e2f-4108-a8b4-302650697beb)
 
+### rounting report generated
+
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/abd35dc9-e0ee-4ce9-b317-0371c854ec7a)
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/5079af45-c895-457d-b734-7ed9ae4ef3e1)
@@ -1951,64 +1955,12 @@ To see the design:
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/42235633-5ad5-4ea2-bc1f-31e36f5572e5)
 
 
+#### Statistics
 
+Internal Power = 8.86e-05 W
 
+Switching Power = 1.56e-05 W
 
+Leakage Power = 1.33e-09 W
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Total Power = 1.04e-04 W
