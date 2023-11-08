@@ -167,8 +167,11 @@ command for synthesis:
 
 ### Synthesis printing statistics
 
-![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/33bcaf63-3b5c-45ad-bd68-1c18c72af298)
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/d7ace68b-bd68-4562-85d2-1a2161e57f0e)
 
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/460a34af-38fd-4edb-8d3c-7200ced58c84)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/e027a277-6213-4c9b-84bf-4586e14898a0)
 
 #### Calculating Flop Ratio
 
@@ -176,6 +179,14 @@ command for synthesis:
 Flop ratio = Number of D Flip flops / Total Number of cells
 
 Flop Ratio = 8/9 = 0.889
+
+### synthesis report generated
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/6bc3b9e0-0ef3-4ec4-aa43-808b6545bd69)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/6e815970-73c6-46e7-839c-8fd213deb253)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/f6de685a-f8f7-4360-9268-7306043d3665)
 
 ### Floorplan
 Physical design is process of transforming netlist into layout which is manufacture-able [GDS]. Physical design process is often referred as PnR (Place and Route) / APR (Automatic Place & Route). Main steps in physical design are placement of all logical cells, clock tree synthesis & routing. During this process of physical design timing, power, design & technology constraints have to be met. Further design might require being optimized w.r.t area, power and performance
@@ -197,6 +208,9 @@ core area
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/076225ab-5eb9-4a65-ac0c-f79f2531883d)
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/20c8cd0d-14bb-4fbe-8e3a-b7bf06cbdfaa)
+
+### floorplan report generated
+
 
 To view the design we type
 
@@ -231,6 +245,14 @@ Invoke placement using command:
     run_placement
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/d841af37-ba7a-4adf-9706-1e1ddc6426be)
+
+### Placement report generated
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/956968c6-3f7a-479d-87b3-7208f659d171)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/5f1e49dd-c98b-4023-8295-ac3db920203f)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/7284aab0-772a-46db-b7b3-271d1c316f29)
 
 to see the design 
 
@@ -1878,6 +1900,11 @@ checks report:
 
 
     worst slack corner Typical: 0.2322
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/29d30efd-0aa0-4a70-aa1b-548dfd7f588d)
+
+![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/66995dcf-ccaf-4bb3-a69b-030519370340)
+
 #### Magic output:
 
 ![image](https://github.com/Shubhashree359/johnson_counter/assets/142501263/dbb3914b-3e52-46ca-819a-8ae57f40da41)
